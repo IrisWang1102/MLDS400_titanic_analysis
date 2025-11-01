@@ -16,6 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire src folder (keeping internal structure)
 COPY src ./src
+RUN chmod -R 777 /app/src
 
 # Set default command
 CMD ["python", "src/app/main.py"]
