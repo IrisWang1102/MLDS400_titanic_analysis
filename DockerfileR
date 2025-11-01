@@ -1,0 +1,39 @@
+FROM rocker/r-base:4.3.2
+
+# Disable interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency installer
+COPY install_packages.R .
+
+# Install system dependencies (for tidyverse, caret, etc.)
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxt6 \
+    libfontconfig1-dev \
+    libfreetype6-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libjpeg-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install required R packages
+RUN Rscript install_packages.R
+
+# Copy R source code and data
+COPY src ./src
+
+# Default command to run main script
+CMD ["Rscript", "src/appR/main.R"]
+
+
+
+
+
+
+
