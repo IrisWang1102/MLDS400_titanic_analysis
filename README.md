@@ -35,12 +35,12 @@ Running the Python Pipeline
 docker build -t titanic-py .
 
 2. Run the Python container
-docker run --rm -v "$(pwd)/src/data:/app/src/data" titanic-py
+docker run --rm -v "$(pwd)/src:/app/src" titanic-model
 
 3. Results
 Messages: Data preprocessing steps 
 Results: Training accuracy
-Predictions are saved as csv file to: src/data/predictions.csv
+Predictions are saved as csv file to: src/predictions.csv
 
 
 Running the R Pipeline
