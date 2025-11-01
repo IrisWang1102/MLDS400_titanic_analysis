@@ -20,7 +20,7 @@ test_df = pd.read_csv(TEST_PATH)
 
 print(f'test_df shape: {test_df.shape}')
 
-output_path = os.path.join(BASE_DIR, 'data', 'predictions.csv')
+output_path = os.path.join(BASE_DIR, 'predictions.csv')
 
 train_df.drop(columns=['Cabin', 'Ticket'], inplace=True)
 test_df.drop(columns=['Cabin', 'Ticket'], inplace=True)
